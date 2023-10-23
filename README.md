@@ -27,7 +27,7 @@ _This was largely created using ChatGPT - I am not a dev, but enjoy trying to cr
 - Set the ROOT_DIRECTORY in the script (default is 'Content'). This directory should contain subdirectories representing different trait types, with each subdirectory containing files representing individual traits.
 
 3. Running the Script:
-- Execute the script by running python generatorder.py in your terminal.
+- Execute the script by running python generateorder.py in your terminal.
 - The script will first create a spreadsheet named 'traits_info.xlsx'. Fill in the necessary information about each trait in this file. Please note if you chose to use rarity % you must make sure that across all traits in that type the total adds up to 100%.
 
 4. Generating Metadata:
@@ -41,7 +41,7 @@ Once the process is complete, the script generates several files:
 - traits.json: Maps traits to their respective inscription IDs.
 - trait_usage_statistics.json: Provides a summary of trait usage and distribution across the collection.
 
-Handling Errors and Inconsistencies:
+### Handling Errors and Inconsistencies:
 - If there are any errors or inconsistencies in the 'traits_info.xlsx' file or the generated metadata, the script will provide error messages. Correct the issues based on the feedback and run the script again if needed.
 Caution
 - Ensure that the rules for rarity and trait avoidance are logically consistent. Conflicting rules might prevent the script from generating the collection metadata.
