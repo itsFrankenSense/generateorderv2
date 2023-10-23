@@ -1,49 +1,52 @@
 ### Overview
-This script is a handy utility for generating metadata for collections, particularly useful for projects involving NFTs or similar digital assets. It creates a structured spreadsheet, allows users to define traits and their characteristics, and generates metadata for each item in a collection, ensuring uniqueness and adherence to the defined rules.
+This script serves as a convenient tool for generating metadata for collections, tailored for compatibility with www.generatord.io. It may not align with the requirements of other platforms. The script allows users to define trait rarities, specify traits that should not coexist, and even consider the absence of a trait ("none") as a valid option.
 
-_This was largely created using ChatGPT - I am not a dev, but enjoy trying to create tools that make life easier._
+_I'm not a developer, but I enjoy creating tools that might simplify life for others. A large portion of this script was created by ChatGPT. Me monkey, me type._
 
 ## Features
-- Spreadsheet Creation and Management: Automatically generates a well-structured spreadsheet for easy trait management. Users can define trait types, individual traits, rarities, and rules for trait compatibility.
+- **Spreadsheet Creation**: Creates an organized spreadsheet that users can navigate with ease. This setup facilitates the adjustment of trait rarities and creates rules for trait compatibility.
 
-- Dynamic Trait Handling: Supports an extensive range of trait types and individual traits. It allows defining rules for avoiding specific trait combinations, ensuring each generated item in the collection maintains its uniqueness and logical consistency.
+- **Metadata Generation**: Executes the creation of metadata for a predetermined number of collection items, adhering to the user-defined rarities and rules.
 
-- Metadata Generation: Produces metadata for a specified number of items in a collection. Each item's metadata includes selected traits following the rarity and rules defined by the user.
+- **Validation**: Aims to maintain the logical consistency of traits within each metadata item and throughout the entire collection. The process involves checking for prohibited trait pairings and aiming to adhere to the user's rarity specifications.
 
-- Validation: Ensures the logical consistency of traits within each item's metadata and across the collection. It checks for invalid combinations and adherence to rarity specifications.
-
-- Statistics and Summary: Provides a summary of trait usage across the generated collection, helping users understand the distribution and frequency of each trait within the collection.
+- **Statistics and Summary**: Offers a breakdown of trait usage throughout the collection, with distribution and occurrence frequency of each trait. It's crucial to personally verify that the output aligns with your expectations, as the script doesn't guarantee absolute accuracy.
 
 ### Requirements
 - Python 3.x
-- openpyxl library for handling Excel spreadsheets.
+- The `openpyxl` library, essential for managing Excel spreadsheets.
 
 ### How to Use
-1. Setting Up Your Environment:
-- Ensure you have Python 3 installed. You can download it from python.org.
-- Install the necessary Python library: openpyxl by running pip install openpyxl.
+1. **Setting Up Your Environment**:
+   - Confirm that Python 3 is installed on your system.
+   - Install the required `openpyxl` library using the command: `pip install openpyxl`.
 
-2. Configuration:
-- Set the ROOT_DIRECTORY in the script (default is 'Content'). This directory should contain subdirectories representing different trait types, with each subdirectory containing files representing individual traits.
+2. **Configuration**:
+   - Specify the `ROOT_DIRECTORY` within the script (default set as 'Content'). This directory should host subdirectories, each symbolizing a different trait type, with individual files within these subfolders representing the traits.
 
-3. Running the Script:
-- Execute the script by running python generateorder.py in your terminal.
-- The script will first create a spreadsheet named 'traits_info.xlsx'. Fill in the necessary information about each trait in this file. Please note if you chose to use rarity % you must make sure that across all traits in that type the total adds up to 100%.
+3. **Running the Script**:
+   - Initiate the script by executing `python generateorder.py` in your terminal.
+   - The script kickstarts the process by creating a 'traits_info.xlsx' spreadsheet based on your folder structure.
+   - Leaving the rarity field empty defaults to a random rarity assignment.
+   - If opting for specific rarity percentages, ensure the collective rarity across all traits within a type equals 100%.
+   - Including 'Yes' for the 'None' trait it should be added in your rarity percentages.
+   - To prevent certain traits from pairing in the generated metadata, list the trait numbers in the 'Avoid Traits' column, separating multiple traits with commas.
 
-4. Generating Metadata:
-- After updating the 'traits_info.xlsx' file, press Enter in the terminal to continue with the script.
-- Enter the number of items (inscriptions) you wish to generate metadata for.
-- The script will generate metadata, ensuring that each item is unique and follows the defined rules. It will also validate the generated data to check for any inconsistencies or rule violations. PLEASE always double check your metadata as this may not be accurate.
+4. **Generating Metadata**:
+   - Once you've updated the 'traits_info.xlsx' file, press Enter in your terminal to prompt the script to continue.
+   - Specify the quantity of items (inscriptions) for which you intend to generate metadata.
+   - The script then creates the metadata generation, ensuring each item is not the same as any other already created for metadata and attempts to abide by rarity and trait avoidence. It concurrently validates the data to identify any inconsistencies or breaks in the rules. It's IMPORTANT to double-check your metadata for precision, as discrepancies may exist.
 
-5. Output:
-Once the process is complete, the script generates several files:
-- metadata.json: Contains the metadata for each item in the collection.
-- traits.json: Maps traits to their respective inscription IDs.
-- trait_usage_statistics.json: Provides a summary of trait usage and distribution across the collection.
+5. **Output**:
+   - Upon completion, the script generates several files:
+     - `metadata.json`: Houses the metadata for each collection item.
+     - `traits.json`: Associates traits with their corresponding inscription IDs.
+     - `trait_usage_statistics.json`: Presents a detailed account of trait usage and distribution throughout the collection.
 
 ### Handling Errors and Inconsistencies:
-- If there are any errors or inconsistencies in the 'traits_info.xlsx' file or the generated metadata, the script will provide error messages. Correct the issues based on the feedback and run the script again if needed.
-Caution
-- Ensure that the rules for rarity and trait avoidance are logically consistent. Conflicting rules might prevent the script from generating the collection metadata.
+- Should you encounter errors or inconsistencies within the 'traits_info.xlsx' file or the generated metadata, the script will highlight these. It's advisable to rectify these based on the provided feedback and re-run the script if necessary.
 
-*The script attempts to generate unique metadata for each item in the collection. If you encounter issues with generating a large collection, consider adding more traits or adjusting the rules to allow more unique combinations.
+### Caution
+- It's important to ensure that the rules established for rarity and trait avoidance are logically sound. Conflicting or ambiguous rules could hinder the script's ability to produce the collection metadata.
+
+*In scenarios where the script struggles to generate unique metadata for each collection item, it's worthwhile to consider introducing additional traits or tweaking the rules to accommodate a broader range of unique combinations.*
